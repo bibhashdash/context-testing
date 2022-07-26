@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import {useContext} from 'react';
 import './App.css';
+import Header from './Components/Header';
+import Counter from './Components/Counter';
 
+import CounterContextProvider, {CounterContext} from './Contexts/CounterContext';
 function App() {
+  const x = useContext(CounterContext);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CounterContextProvider value={x}>
+      <Header />
+      <Counter />
+      </CounterContextProvider>
     </div>
   );
 }
